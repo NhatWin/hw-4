@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "Righteous";
+  src: url(Righteous-Regular.ttf) format("truetype");
+}
+
+body {
+  background-color: #f5ac03;
+  color:#fafdc8;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Righteous";
+  font-size: 120px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Righteous";
+  font-size: 80px;
+  margin-bottom: 30px;
+}
+
+p {
+  text-align: center;
+  font-family: "Righteous";
+  font-size: 40px;
+}
+
+section, div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* https://www.htmlcssbuttongenerator.com/css-button-generator.html */
+button {
+  font-family: Roboto, sans-serif;
+  font-weight: 0;
+  font-size: 30px;
+  font-family: "Righteous";
+  color: #f5ac03;
+  background-color: #fafdc8;
+  padding: 10px 30px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 50px;
+  transition : 1000ms;
+  transform: translateY(0);
+  margin: 20px;
+  }
+
+  button:hover{
+  transition : 1000ms;
+  padding: 10px 50px;
+  transform : translateY(-0px);
+  background-color: ##fafdc8;
+  color: #000000;
+  border: none;
+  }
