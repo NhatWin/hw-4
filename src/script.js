@@ -86,7 +86,9 @@ const question10 = {
 
 let questionOrder = [question1, question2, question3, question4, question5, question6,question7, question8, question9, question10];
 
-console.log(question2.wrong);
+// randomize question order
+const shuffledArray = questionOrder.sort((a,b) => 0.5 - Math.random());
+console.log(shuffledArray);
 
 // Timer
 function countDown() {
