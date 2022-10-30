@@ -97,10 +97,9 @@ console.log(questionList[0].q);
 
 // randomize answer order
 let answerTracker = 0;
-let answers = [questionList[answerTracker].wrong1, questionList[answerTracker].wrong2, questionList[answerTracker].wrong3, questionList[answerTracker].correct];
+let options = [questionList[answerTracker].wrong1, questionList[answerTracker].wrong2, questionList[answerTracker].wrong3, questionList[answerTracker].correct];
 
-const answerList = answers.sort((a,b) => 0.5 - Math.random());
-console.log(answerList);
+const answerList = options.sort((a,b) => 0.5 - Math.random());
 
 // Timer
 function countDown() {
@@ -120,10 +119,10 @@ countDown();
 
 // Display questions
   displayQuestion.append(questionList[0].q);
-  displayAnswer1.append(answers[0]);
-  displayAnswer2.append(answers[1]);
-  displayAnswer3.append(answers[2]);
-  displayAnswer4.append(answers[3]);
+  displayAnswer1.append(options[0]);
+  displayAnswer2.append(options[1]);
+  displayAnswer3.append(options[2]);
+  displayAnswer4.append(options[3]);
 
 
 
@@ -131,6 +130,33 @@ countDown();
 // Select answer
 buttons.forEach(function(button) {
   button.addEventListener("click", function handleClick(event){
-    console.log(event.target.id);
+    if (event.target.id === "answer1") {
+      if (options[0] === questions[0].correct) {
+        console.log("correct!");
+      } else {
+        console.log("WRONG!");
+      }
+    };
+    if (event.target.id === "answer2") {
+      if (options[1] === questions[0].correct) {
+        console.log("correct!");
+      } else {
+        console.log("WRONG!");
+      }
+    };
+    if (event.target.id === "answer3") {
+      if (options[2] === questions[0].correct) {
+        console.log("correct!");
+      } else {
+        console.log("WRONG!");
+      }
+    };
+    if (event.target.id === "answer4") {
+      if (options[3] === questions[0].correct) {
+        console.log("correct!");
+      } else {
+        console.log("WRONG!");
+      }
+    };
   });
 });
