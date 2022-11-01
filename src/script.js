@@ -8,7 +8,9 @@ const displayAnswer1 = document.querySelector("#answer1");
 const displayAnswer2 = document.querySelector("#answer2");
 const displayAnswer3 = document.querySelector("#answer3");
 const displayAnswer4 = document.querySelector("#answer4");
-const buttonDiv = document.querySelector('#answerBtn')
+const buttonDiv = document.querySelector("#answerBtn");
+const highscoreForm = document.querySelector("#userInput");
+const closeGame = document.querySelector("#game");
 
 let optionList;
 
@@ -16,7 +18,7 @@ let optionList;
 const question1 = {
   q: "What data type has two possible values, either true or false?",
   choices: ["string", "number", "if statement", "boolean"],
-  answer: "boolean"
+  correct: "boolean"
 };
 
 const question2 = {
@@ -99,12 +101,13 @@ function countDown() {
 
     if (i < 0) {
       clearInterval(countDownInterval);
-      //location.replace("./index.html")
     }
     if (i === 0) {
+      closeGame.style.setProperty("display", "none");
+      highscoreForm.style.setProperty("display", "block");
       console.log("end game");
     }
-  }, 100);
+  }, 10000);
 }
 
 countDown();
@@ -131,6 +134,8 @@ buttonDiv.addEventListener('click', function(event) {
         console.log("WRONG!");
       }
       if (questionTracker === 9) {
+        closeGame.style.setProperty("display", "none");
+         highscoreForm.style.setProperty("display", "block");
         console.log('End Quiz')
         return
       }

@@ -56,7 +56,7 @@ h2 {
   margin: 0px;
 }
 
-section, div {
+section, #answerBtn {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -93,4 +93,23 @@ button {
 
 #userInput {
   display: none;
+  text-align: center;
+  font-family: Righteous;
+  font-size: 40px;
+}
+
+input {
+  border-radius: 50px;
+  padding: 20px;
+  height: 36px;
+  background-color: #fafdc8;
+  color: #f5ac03;
+  outline: none;
+  border: none;
+  font-size: 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+#game {
+  display: block;
 }
