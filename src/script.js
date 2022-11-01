@@ -8,6 +8,9 @@ const displayAnswer1 = document.querySelector("#answer1");
 const displayAnswer2 = document.querySelector("#answer2");
 const displayAnswer3 = document.querySelector("#answer3");
 const displayAnswer4 = document.querySelector("#answer4");
+const buttonDiv = document.querySelector('#answerBtn')
+
+let optionList;
 
 // questions
 const question1 = {
@@ -78,7 +81,11 @@ const questionList = questions.sort((a,b) => 0.5 - Math.random());
 // randomize answer order
 let questionTracker = 0;
 
-const optionList = questions[questionTracker].choices.sort((a,b) => 0.5 - Math.random());
+function ramdomizeOrder() {
+  optionList = questions[questionTracker].choices.sort((a,b) => 0.5 - Math.random());
+}
+
+ramdomizeOrder()
 
 // Point tracker
 let pointCount = 0;
@@ -94,7 +101,10 @@ function countDown() {
       clearInterval(countDownInterval);
       //location.replace("./index.html")
     }
-  }, 1000);
+    if (i === 0) {
+      console.log("end game");
+    }
+  }, 100);
 }
 
 countDown();
@@ -106,47 +116,31 @@ displayAnswer2.append(optionList[1]);
 displayAnswer3.append(optionList[2]);
 displayAnswer4.append(optionList[3]);
 
+
 // Select answer
-buttons.forEach(function(button) {
-  button.addEventListener("click", function handleClick(event) {
-    if (event.target.id === "answer1") {
-      if (optionList[0] === questions[questionTracker].correct) {
+buttonDiv.addEventListener('click', function(event) {
+
+  if (!event.target.matches('.answer')) {
+    return
+  }
+  if(event.target.textContent === questions[questionTracker].correct) {
         pointCount = pointCount + 10;
         console.log("correct!");
-      } else {
+  } else {
         pointCount = pointCount - 5;
         console.log("WRONG!");
       }
-    };
-    if (event.target.id === "answer2") {
-      if (optionList[1] === questions[questionTracker].correct) {
-        pointCount = pointCount + 10;
-        console.log("correct!");
-      } else {
-        pointCount = pointCount - 5;
-        console.log("WRONG!");
+      if (questionTracker === 9) {
+        console.log('End Quiz')
+        return
       }
-    };
-    if (event.target.id === "answer3") {
-      if (optionList[2] === questions[questionTracker].correct) {
-        pointCount = pointCount + 10;
-        console.log("correct!");
-      } else {
-        pointCount = pointCount - 5;
-        console.log("WRONG!");
-      }
-    };
-    if (event.target.id === "answer4") {
-      if (optionList[3] === questions[questionTracker].correct) {
-        pointCount = pointCount + 10;
-        console.log("correct!");
-      } else {
-        pointCount = pointCount - 5;
-        console.log("WRONG!");
-      }
-    };
     questionTracker++;
     pointDisplay.textContent = pointCount;
     displayQuestion.textContent = questionList[questionTracker].q;
-  });
-});
+    ramdomizeOrder()
+    displayAnswer1.textContent = optionList[0];
+    displayAnswer2.textContent = optionList[1];
+    displayAnswer3.textContent = optionList[2];
+    displayAnswer4.textContent = optionList[3];
+
+})

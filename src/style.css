@@ -90,3 +90,7 @@ button {
   color: #000000;
   border: none;
   }
+
+#userInput {
+  display: none;
+}
