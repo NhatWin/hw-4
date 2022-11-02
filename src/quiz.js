@@ -110,7 +110,6 @@ function countDown() {
       closeGame.style.setProperty("display", "none");
       highscoreForm.style.setProperty("display", "block");
       displayFinPoints.textContent = pointCount;
-      console.log("end game");
     }
   }, 1000);
 }
@@ -133,16 +132,13 @@ buttonDiv.addEventListener('click', function(event) {
   }
   if(event.target.textContent === questions[questionTracker].correct) {
         pointCount = pointCount + 10;
-        console.log("correct!");
   } else {
         pointCount = pointCount - 5;
-        console.log("WRONG!");
       }
       if (questionTracker === 9) {
         closeGame.style.setProperty("display", "none");
          highscoreForm.style.setProperty("display", "block");
          displayFinPoints.textContent = pointCount;
-        console.log('End Quiz')
         return
       }
     questionTracker++;
@@ -186,7 +182,6 @@ function sortScores() {
 
 function saveScores() {
   localStorage.setItem("playerData", JSON.stringify(sortedScores));
-  console.log(localStorage.getItem("playerData"));
   switchPage();
 }
 
