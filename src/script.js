@@ -1,6 +1,5 @@
 const COUNTDOWN_TIME = 100;
 
-const buttons = document.querySelectorAll("button");
 const countdownSpan = document.querySelector("#countdown");
 const pointDisplay = document.querySelector("#point");
 const displayQuestion = document.querySelector("h2");
@@ -9,8 +8,9 @@ const displayAnswer2 = document.querySelector("#answer2");
 const displayAnswer3 = document.querySelector("#answer3");
 const displayAnswer4 = document.querySelector("#answer4");
 const buttonDiv = document.querySelector("#answerBtn");
-const highscoreForm = document.querySelector("#userInput");
+const highscoreForm = document.querySelector("#form");
 const closeGame = document.querySelector("#game");
+const displayFinPoints = document.querySelector("#pointCountDisplay");
 
 let optionList;
 
@@ -76,7 +76,7 @@ const question10 = {
 };
 
 // randomize question order
-let questions = [question1, question2, question3, question4, question5, question6,question7, question8, question9, question10];
+let questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
 const questionList = questions.sort((a,b) => 0.5 - Math.random());
 
@@ -105,9 +105,10 @@ function countDown() {
     if (i === 0) {
       closeGame.style.setProperty("display", "none");
       highscoreForm.style.setProperty("display", "block");
+      displayFinPoints.textContent = pointCount;
       console.log("end game");
     }
-  }, 10000);
+  }, 1000);
 }
 
 countDown();
@@ -136,6 +137,7 @@ buttonDiv.addEventListener('click', function(event) {
       if (questionTracker === 9) {
         closeGame.style.setProperty("display", "none");
          highscoreForm.style.setProperty("display", "block");
+         displayFinPoints.textContent = pointCount;
         console.log('End Quiz')
         return
       }
@@ -147,5 +149,32 @@ buttonDiv.addEventListener('click', function(event) {
     displayAnswer2.textContent = optionList[1];
     displayAnswer3.textContent = optionList[2];
     displayAnswer4.textContent = optionList[3];
-
 })
+
+let sortedScores = [];
+
+// form submission
+highscoreForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = event.target.name.value;
+
+  let storeHighscore = {
+    name,
+    score: pointCount,
+  }
+
+  sortedScores.push(storeHighscore);
+  sortScores();
+});
+
+// score sorter
+function sortScores() {
+  sortedScores.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+  saveScores();
+}
+
+function saveScores() {
+  localStorage.setItem("playerData", JSON.stringify(sortedScores));
+  console.log(localStorage.getItem("playerData"));
+}
