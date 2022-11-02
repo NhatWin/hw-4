@@ -187,4 +187,9 @@ function sortScores() {
 function saveScores() {
   localStorage.setItem("playerData", JSON.stringify(sortedScores));
   console.log(localStorage.getItem("playerData"));
+  switchPage();
+}
+
+function switchPage() {
+  window.location.replace("./scoreBoard.html");
 }

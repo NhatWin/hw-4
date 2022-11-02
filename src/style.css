@@ -161,7 +161,7 @@ h3 {
   border-radius: 25px;
 }
 
-ol {
+ul {
   padding-left: 0;
 }
 
@@ -174,5 +174,6 @@ ol {
   border-radius: 25px;
   padding-left: 30px;
   padding-right: 30px;
+  margin: 5px;
 }
 
