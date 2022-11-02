@@ -1,3 +1,4 @@
+// quiz page
 const COUNTDOWN_TIME = 100;
 
 const countdownSpan = document.querySelector("#countdown");
@@ -13,6 +14,9 @@ const closeGame = document.querySelector("#game");
 const displayFinPoints = document.querySelector("#pointCountDisplay");
 
 let optionList;
+
+// score page
+//let yourPoints = document.querySelector()
 
 // questions
 const question1 = {
@@ -165,7 +169,13 @@ highscoreForm.addEventListener("submit", function (event) {
   }
 
   sortedScores.push(storeHighscore);
+  if(localStorage.getItem("playerData") === null){
+    saveScores();
+} else {
+  let playerData = JSON.parse(localStorage.getItem("playerData"));
+  sortedScores = playerData.concat(sortedScores);
   sortScores();
+}
 });
 
 // score sorter

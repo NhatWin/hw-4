@@ -144,7 +144,7 @@ h3 {
 
 /* Leader Board */
 
-body {
+.endGame {
   display: flex;
   justify-content: center;
   flex-direction: column;
