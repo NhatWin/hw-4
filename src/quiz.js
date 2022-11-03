@@ -12,11 +12,11 @@ const buttonDiv = document.querySelector("#answerBtn");
 const highscoreForm = document.querySelector("#form");
 const closeGame = document.querySelector("#game");
 const displayFinPoints = document.querySelector("#pointCountDisplay");
+const correctAudio = new Audio("./src/correct-choice.mp3");
+const wrongAudio = new Audio("./src/wrong-choice.mp3");
 
 let optionList;
 
-// score page
-//let yourPoints = document.querySelector()
 
 // questions
 const question1 = {
@@ -132,8 +132,10 @@ buttonDiv.addEventListener('click', function(event) {
   }
   if(event.target.textContent === questions[questionTracker].correct) {
         pointCount = pointCount + 10;
+        correctAudio.play();
   } else {
         pointCount = pointCount - 5;
+        wrongAudio.play();
       }
       if (questionTracker === 9) {
         closeGame.style.setProperty("display", "none");
