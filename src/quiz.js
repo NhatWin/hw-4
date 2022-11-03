@@ -100,12 +100,12 @@ let pointCount = 0;
 function countDown() {
 
   const countDownInterval = setInterval(function() {
-    countdownSpan.textContent = COUNTDOWN_TIME - 1;
+    countdownSpan.textContent = COUNTDOWN_TIME;  COUNTDOWN_TIME--;
 
-    if (i < 0) {
+    if (COUNTDOWN_TIME < 0) {
       clearInterval(countDownInterval);
     }
-    if (i === 0) {
+    if (COUNTDOWN_TIME <= 0) {
       closeGame.style.setProperty("display", "none");
       highscoreForm.style.setProperty("display", "block");
       displayFinPoints.textContent = pointCount;
