@@ -1,5 +1,5 @@
 // quiz page
-const COUNTDOWN_TIME = 100;
+let COUNTDOWN_TIME = 100;
 
 const countdownSpan = document.querySelector("#countdown");
 const pointDisplay = document.querySelector("#point");
@@ -98,10 +98,9 @@ let pointCount = 0;
 
 // Timer
 function countDown() {
-  let i = COUNTDOWN_TIME;
 
   const countDownInterval = setInterval(function() {
-    countdownSpan.textContent = i; i--;
+    countdownSpan.textContent = COUNTDOWN_TIME - 1;
 
     if (i < 0) {
       clearInterval(countDownInterval);
@@ -135,6 +134,7 @@ buttonDiv.addEventListener('click', function(event) {
         correctAudio.play();
   } else {
         pointCount = pointCount - 5;
+        COUNTDOWN_TIME = COUNTDOWN_TIME - 10;
         wrongAudio.play();
       }
       if (questionTracker === 9) {
