@@ -158,22 +158,25 @@ let sortedScores = [];
 // form submission
 highscoreForm.addEventListener("submit", function (event) {
   event.preventDefault();
+  if (event.target.name.value === "") {
+    alert("Name needed to submit score!");
+  } else {
+    const name = event.target.name.value;
 
-  const name = event.target.name.value;
-
-  let storeHighscore = {
+    let storeHighscore = {
     name,
     score: pointCount,
-  }
+    }
 
-  sortedScores.push(storeHighscore);
-  if(localStorage.getItem("playerData") === null){
+    sortedScores.push(storeHighscore);
+    if(localStorage.getItem("playerData") === null){
     saveScores();
-} else {
-  let playerData = JSON.parse(localStorage.getItem("playerData"));
-  sortedScores = playerData.concat(sortedScores);
-  sortScores();
-}
+    } else {
+      let playerData = JSON.parse(localStorage.getItem("playerData"));
+      sortedScores = playerData.concat(sortedScores);
+      sortScores();
+    }
+  }
 });
 
 // score sorter
